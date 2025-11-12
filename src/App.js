@@ -12,7 +12,7 @@ function App() {
         `https://api.frankfurter.app/latest?${amount}=100&from=${fromCur}&to=${toCur}`
       );
       const data = await res.json();
-      console.log(data);
+      console.log(data.rates[toCur]);
     }
     convert();
   }, []);
