@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // `https://api.frankfurter.app/latest?amount=100&from=EUR&to=USD`
 function App() {
   const [amount, setAmount] = useState(1);
   const [fromCur, setFromCur] = useState("EUR");
   const [toCur, setToCur] = useState("USD");
+
+  useEffect(function () {
+    async function convert() {
+      const res = await fetch(
+        `https://api.frankfurter.app/latest?${amount}=100&from=${fromCur}&to=${toCur}`
+      );
+      const data = await res.json();
+      console.log(data);
+    }
+    convert();
+  }, []);
   return (
     <div className="App">
       <input
