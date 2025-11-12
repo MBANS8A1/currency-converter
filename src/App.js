@@ -7,7 +7,11 @@ function App() {
   const [toCur, setToCur] = useState("USD");
   return (
     <div className="App">
-      <input type="text" />
+      <input
+        type="text"
+        value={amount}
+        onChange={(e) => setAmount(Number(e.target.value))}
+      />
 
       <select>
         <option value="USD">USD</option>
